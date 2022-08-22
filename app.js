@@ -134,15 +134,20 @@ class tourBooking extends hotelBooking {
     this._discount = 0.15;
     this.setBooking = extBooking;
   }
-
+  // como no vi ninguna especificacion sobre donde aplicar el descuento lo hice del total
+  // despues de haber facturado el subotal con el iva
+  // (subtotal + iva) - descuento 
   calculateTotal() {
     super.calculateTotal();
     this._total = (this._total * (1-this._discount )).toFixed(2);
   }
 }
 
+console.log("Precios privados")
 const reservaPrivate = new privateBooking(reservas, priceRoom);
 reservaPrivate.print();
 
+
+console.log("Precios tour")
 const reservaTour = new tourBooking(reservas, priceRoomTour);
 reservaTour.print();
